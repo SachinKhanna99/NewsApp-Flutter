@@ -1,15 +1,15 @@
 // To parse this JSON data, do
 //
-//     final bitcoin = bitcoinFromJson(jsonString);
+//     final apple = appleFromJson(jsonString);
 
 import 'dart:convert';
 
-Bitcoin bitcoinFromJson(String str) => Bitcoin.fromJson(json.decode(str));
+Apple appleFromJson(String str) => Apple.fromJson(json.decode(str));
 
-String bitcoinToJson(Bitcoin data) => json.encode(data.toJson());
+String appleToJson(Apple data) => json.encode(data.toJson());
 
-class Bitcoin {
-  Bitcoin({
+class Apple {
+  Apple({
     this.status,
     this.totalResults,
     this.articles,
@@ -19,7 +19,7 @@ class Bitcoin {
   int totalResults;
   List<Article> articles;
 
-  factory Bitcoin.fromJson(Map<String, dynamic> json) => Bitcoin(
+  factory Apple.fromJson(Map<String, dynamic> json) => Apple(
     status: json["status"],
     totalResults: json["totalResults"],
     articles: List<Article>.from(json["articles"].map((x) => Article.fromJson(x))),
@@ -55,24 +55,24 @@ class Article {
 
   factory Article.fromJson(Map<String, dynamic> json) => Article(
     source: Source.fromJson(json["source"]),
-    author: json["author"] == null ? null : json["author"],
+    author: json["author"],
     title: json["title"],
     description: json["description"],
     url: json["url"],
-    urlToImage: json["urlToImage"] == null ? null : json["urlToImage"],
+    urlToImage: json["urlToImage"],
     publishedAt: DateTime.parse(json["publishedAt"]),
-    content: json["content"] == null ? null : json["content"],
+    content: json["content"],
   );
 
   Map<String, dynamic> toJson() => {
     "source": source.toJson(),
-    "author": author == null ? null : author,
+    "author": author,
     "title": title,
     "description": description,
     "url": url,
-    "urlToImage": urlToImage == null ? null : urlToImage,
+    "urlToImage": urlToImage,
     "publishedAt": publishedAt.toIso8601String(),
-    "content": content == null ? null : content,
+    "content": content,
   };
 }
 

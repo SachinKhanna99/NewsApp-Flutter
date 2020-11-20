@@ -1,32 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:intl/intl.dart';
-import 'package:news_flutter_test/description.dart';
-import 'package:news_flutter_test/model/Movies.dart';
-import 'package:news_flutter_test/services/MoviesServices.dart';
+import 'package:news_flutter_test/model/Health.dart';
+import 'package:news_flutter_test/services/HeathNewsServices.dart';
 
-class ShowLatestNews extends StatefulWidget {
+import '../description.dart';
+class HealthScreen extends StatefulWidget {
   @override
-  _ShowLatestNewsState createState() => _ShowLatestNewsState();
+  _HealthScreenState createState() => _HealthScreenState();
 }
 
-class _ShowLatestNewsState extends State<ShowLatestNews> {
-  Future<Movies> _moviesmodel;
+class _HealthScreenState extends State<HealthScreen> {
 
-//  final PackageController productcontroller=Get.put(PackageController());
-
+  Future<Health> _healthmodel;
 
   @override
   void initState() {
-    _moviesmodel=MoviesServices().fetch();
+    _healthmodel=HealthServices().fetch();
     super.initState();
-  }
 
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Entertainment News"),
+        title: Text("Health News"),
 
       ),
       body: Padding(
@@ -34,8 +32,8 @@ class _ShowLatestNewsState extends State<ShowLatestNews> {
         child: Container(
 
           margin: EdgeInsets.all(5),
-          child: FutureBuilder<Movies>(
-            future: _moviesmodel,
+          child: FutureBuilder<Health>(
+            future: _healthmodel,
             builder: (context, snapshot) {
               if(snapshot.hasData)
               {
@@ -50,7 +48,8 @@ class _ShowLatestNewsState extends State<ShowLatestNews> {
 
                     var formatTime=DateFormat('HH:mm').format(article.publishedAt);
                     var isimage=false;
-                    if(im.isEmpty)
+
+                    if(im==null)
                     {
                       isimage=true;
                     }
@@ -59,7 +58,7 @@ class _ShowLatestNewsState extends State<ShowLatestNews> {
                       onTap: (){
                         Navigator.push(context, new MaterialPageRoute(builder: (context) => new Description(
                             article.title,article.description,
-                            formatTime,article.author,formattedTime,weburl
+                            formatTime,article.author,formattedTime,weburl,im
 
                         ),));
                         print(article.description);

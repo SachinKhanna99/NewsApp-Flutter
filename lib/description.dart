@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:share/share.dart';
 // ignore: must_be_immutable
 class Description extends StatefulWidget {
-  var title,description,time,date,author,url;
-  Description(this.title,this.description,this.time,this.author,this.date,this.url);
+  var title,description,time,date,author,url,image;
+  Description(this.title,this.description,this.time,this.author,this.date,this.url,this.image);
   @override
   _DescriptionState createState() => _DescriptionState();
 }
@@ -26,7 +26,12 @@ class _DescriptionState extends State<Description> {
           child: Column(
             
             children: [
+              Container(
+                height: 300,
+                width: 300,
+              child: Image(image: NetworkImage(widget.image,),height: 200,width: 200,fit: BoxFit.cover,),
 
+              ),
               Container(
 
                 child: Text(

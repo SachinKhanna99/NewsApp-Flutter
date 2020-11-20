@@ -61,7 +61,7 @@ class _HomeViewState extends State<HomeView> {
                           onTap: (){
                             Navigator.push(context, new MaterialPageRoute(builder: (context) => new Description(
                                 article.title,article.description,
-                              formatTime,article.author,formattedTime,weburl
+                              formatTime,article.author,formattedTime,weburl,im
 
                             ),));
                             print(article.description);

@@ -1,15 +1,13 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:http/http.dart' as https;
-import 'package:news_flutter_test/model/Bitcoin.dart';
+import 'package:news_flutter_test/model/TechCrunch.dart';
+import 'package:news_flutter_test/model/package.dart';
 
-
-
-class BitcoinServices {
+class TechCrunchServices {
   static var client=https.Client;
 
-  Future<Bitcoin> fetch() async{
-    var response=await https.get("https://newsapi.org/v2/everything?q=bitcoin&from=2020-10-20&sortBy=publishedAt&apiKey=e952ae07f0a047a9a9727b5da87ac3eb");
+  Future<TechCrunch> fetch() async{
+    var response=await https.get("https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=e952ae07f0a047a9a9727b5da87ac3eb");
     var jsonModel=null;
     try{
       if(response.statusCode==200)
@@ -17,7 +15,7 @@ class BitcoinServices {
         var jsonString=response.body;
         var jsonMap=jsonDecode(jsonString);
         print(jsonMap.toString());
-        jsonModel= Bitcoin.fromJson(jsonMap);
+        jsonModel= TechCrunch.fromJson(jsonMap);
         print("Succession");
 
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news_flutter_test/IndianNews.dart';
-import 'package:news_flutter_test/MainScreen.dart';
+import 'file:///C:/Users/Sachin/Documents/GitHub/NewsApp-Flutter/lib/screens/IndianNews.dart';
+import 'file:///C:/Users/Sachin/Documents/GitHub/NewsApp-Flutter/lib/screens/MainScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,6 +27,8 @@ class MyApp extends StatelessWidget {
       home:MainScreen(),
 
       //IndianNews==HOmeView
+      //Aricle di jgah te sports screen
+
     );
   }
 }

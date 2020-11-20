@@ -1,27 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:intl/intl.dart';
-import 'package:news_flutter_test/description.dart';
-import 'package:news_flutter_test/model/Bitcoin.dart';
-import 'package:news_flutter_test/services/BitcoinServices.dart';
+import 'package:news_flutter_test/model/Sports.dart';
+import 'package:news_flutter_test/model/package.dart';
+import 'package:news_flutter_test/services/SportsSevices.dart';
+import 'package:news_flutter_test/services/package_Services.dart';
 
-class BitcoinNews extends StatefulWidget {
+import '../description.dart';
+
+class SportsScreen extends StatefulWidget {
   @override
-  _BitcoinNewsState createState() => _BitcoinNewsState();
+  _SportsScreenState createState() => _SportsScreenState();
 }
 
-class _BitcoinNewsState extends State<BitcoinNews> {
-  Future<Bitcoin> _bitcoinmodel;
+class _SportsScreenState extends State<SportsScreen> {
+
+
+  Future<Sports> _newsmodel;
+
   @override
   void initState() {
-    _bitcoinmodel=BitcoinServices().fetch();
+    _newsmodel=SportsServices().fetch();
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Bitcoin News"),
+        title: Text("Sports News"),
 
       ),
       body: Padding(
@@ -29,8 +35,8 @@ class _BitcoinNewsState extends State<BitcoinNews> {
         child: Container(
 
           margin: EdgeInsets.all(5),
-          child: FutureBuilder<Bitcoin>(
-            future: _bitcoinmodel,
+          child: FutureBuilder<Sports>(
+            future: _newsmodel,
             builder: (context, snapshot) {
               if(snapshot.hasData)
               {
@@ -45,8 +51,7 @@ class _BitcoinNewsState extends State<BitcoinNews> {
 
                     var formatTime=DateFormat('HH:mm').format(article.publishedAt);
                     var isimage=false;
-
-                    if(im.isEmpty)
+                    if(im==null)
                     {
                       isimage=true;
                     }
@@ -55,7 +60,7 @@ class _BitcoinNewsState extends State<BitcoinNews> {
                       onTap: (){
                         Navigator.push(context, new MaterialPageRoute(builder: (context) => new Description(
                             article.title,article.description,
-                            formatTime,article.author,formattedTime,weburl
+                            formatTime,article.author,formattedTime,weburl,im
 
                         ),));
                         print(article.description);

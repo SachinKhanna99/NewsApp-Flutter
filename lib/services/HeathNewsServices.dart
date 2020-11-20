@@ -2,14 +2,16 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as https;
 import 'package:news_flutter_test/model/Bitcoin.dart';
+import 'package:news_flutter_test/model/Business.dart';
+import 'package:news_flutter_test/model/Health.dart';
 
 
 
-class BitcoinServices {
+class HealthServices {
   static var client=https.Client;
 
-  Future<Bitcoin> fetch() async{
-    var response=await https.get("https://newsapi.org/v2/everything?q=bitcoin&from=2020-10-20&sortBy=publishedAt&apiKey=e952ae07f0a047a9a9727b5da87ac3eb");
+  Future<Health> fetch() async{
+    var response=await https.get("https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=e952ae07f0a047a9a9727b5da87ac3eb");
     var jsonModel=null;
     try{
       if(response.statusCode==200)
@@ -17,7 +19,7 @@ class BitcoinServices {
         var jsonString=response.body;
         var jsonMap=jsonDecode(jsonString);
         print(jsonMap.toString());
-        jsonModel= Bitcoin.fromJson(jsonMap);
+        jsonModel= Health.fromJson(jsonMap);
         print("Succession");
 
 
