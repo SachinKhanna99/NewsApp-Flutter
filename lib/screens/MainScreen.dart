@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/Sachin/Documents/GitHub/NewsApp-Flutter/lib/screens/BitcoinNewsScreen.dart';
-import 'file:///C:/Users/Sachin/Documents/GitHub/NewsApp-Flutter/lib/screens/IndianNews.dart';
-import 'file:///C:/Users/Sachin/Documents/GitHub/NewsApp-Flutter/lib/screens/MoviesNews.dart';
-import 'file:///C:/Users/Sachin/Documents/GitHub/NewsApp-Flutter/lib/screens/TechCrunchScreen.dart';
+import 'BitcoinNewsScreen.dart';
+import 'IndianNews.dart';
+import 'MoviesNews.dart';
+
 import 'package:news_flutter_test/model/TechCrunch.dart';
 import 'package:news_flutter_test/screens/BusinessNewsScreen.dart';
 import 'package:news_flutter_test/screens/HealthScreen.dart';
@@ -10,6 +10,7 @@ import 'package:news_flutter_test/screens/MoreMainScreen.dart';
 import 'package:news_flutter_test/screens/ScienceScreen.dart';
 
 import 'SportsScreen.dart';
+import 'TechCrunchScreen.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -70,14 +71,7 @@ class _MainScreenState extends State<MainScreen> {
                         child: Container(
                           height: 300,
                           width: 170,
-                          //margin: EdgeInsets.only(top: 50,left: 20),
-                          child: Container(
-                            margin: EdgeInsets.only(top: 150, left: 10),
-                            // child: new Text(
-                            //     'Entertainment',
-                            //     style: TextStyle(fontSize: 30,color: Colors.white, fontFamily: 'AbrilFatface')
-                            // ),
-                          ),
+
                           decoration: new BoxDecoration(
                             color: const Color(0xfffff),
                             image: new DecorationImage(
@@ -104,14 +98,7 @@ class _MainScreenState extends State<MainScreen> {
                         child: Container(
                           height: 300,
                           width: 170,
-                          // margin: EdgeInsets.only(top: 50,left: 20),
-                          child: Container(
-                            margin: EdgeInsets.only(top: 150, left: 10),
-                            // child: new Text(
-                            //     'Bitcoin',
-                            //     style: TextStyle(fontSize: 25,color: Colors.grey[850], fontFamily: 'AbrilFatface', fontWeight: FontWeight.bold)
-                            // ),
-                          ),
+
                           decoration: new BoxDecoration(
                             color: const Color(0xff7c94b6),
                             image: new DecorationImage(
@@ -200,15 +187,6 @@ class _MainScreenState extends State<MainScreen> {
 
                           width: 170,
 
-                          // margin: EdgeInsets.only(top: 70,left: 20),
-
-                          child: Container(
-                            margin: EdgeInsets.only(top: 150, left: 10),
-                            // child: new Text(
-                            //     'Business',
-                            //     style: TextStyle(fontSize: 30,color: Colors.white, fontFamily: 'AbrilFatface')
-                            // ),
-                          ),
                           decoration: new BoxDecoration(
                             color: const Color(0xff7c94b6),
                             image: new DecorationImage(
@@ -333,16 +311,7 @@ class _MainScreenState extends State<MainScreen> {
 
                           width: 170,
 
-                          // margin: EdgeInsets.only(top: 70,left: 20),
-
-                          child: Container(
-                            margin: EdgeInsets.only(top: 150, left: 10),
-                            // child: new Text(
-                            //     'Business',
-                            //     style: TextStyle(fontSize: 30,color: Colors.white, fontFamily: 'AbrilFatface')
-                            // ),
-                          ),
-                          decoration: new BoxDecoration(
+                            decoration: new BoxDecoration(
                             color: const Color(0xff7c94b6),
                             image: new DecorationImage(
                                 fit: BoxFit.cover,
@@ -350,7 +319,7 @@ class _MainScreenState extends State<MainScreen> {
                                     Colors.white.withOpacity(1),
                                     BlendMode.dstATop),
                                 image: new AssetImage(
-                                    'assets/images/business.png')),
+                                    'assets/images/health.png')),
                           ),
                         ),
                       ),
@@ -369,15 +338,6 @@ class _MainScreenState extends State<MainScreen> {
                           height: 300,
                           width: 170,
 
-                          //margin: EdgeInsets.only(top: 70,left: 23),
-
-                          child: Container(
-                            margin: EdgeInsets.only(top: 150, bottom: 50),
-                            // child: new Text(
-                            //     'Article',
-                            //     style: TextStyle(fontSize: 30,color: Colors.white, fontFamily: 'AbrilFatface')
-                            // ),
-                          ),
                           decoration: new BoxDecoration(
                             color: const Color(0xff7c94b6),
                             image: new DecorationImage(
@@ -386,7 +346,7 @@ class _MainScreenState extends State<MainScreen> {
                                     Colors.white.withOpacity(1),
                                     BlendMode.dstATop),
                                 image: new AssetImage(
-                                    'assets/images/article.png')),
+                                    'assets/images/science.png')),
                           ),
                         ),
                       ),
@@ -464,14 +424,7 @@ class _MainScreenState extends State<MainScreen> {
                         child: Container(
                           height: 300,
                           width: 170,
-                          //margin: EdgeInsets.only(top: 70,left: 20),
-                          child: Container(
-                            margin: EdgeInsets.only(top: 150),
-                            //   child: new Text(
-                            //      'Tech Crunch',
-                            //     style: TextStyle(fontSize: 30,color: Colors.white, fontFamily: 'AbrilFatface')
-                            // ),
-                          ),
+
                           decoration: new BoxDecoration(
                             color: const Color(0xff7c94b6),
                             image: new DecorationImage(
@@ -498,14 +451,7 @@ class _MainScreenState extends State<MainScreen> {
                         child: Container(
                           height: 300,
                           width: 170,
-//                 margin: EdgeInsets.only(top: 70,left: 23),
-                          child: Container(
-                            margin: EdgeInsets.only(top: 150),
-                            // child: new Text(
-                            //     'Indian News',
-                            //     style: TextStyle(fontSize: 30,color: Colors.grey[850], fontFamily: 'AbrilFatface')
-                            // ),
-                          ),
+
                           decoration: new BoxDecoration(
                             color: const Color(0xff7c94b6),
                             image: new DecorationImage(

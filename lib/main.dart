@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/Sachin/Documents/GitHub/NewsApp-Flutter/lib/screens/IndianNews.dart';
-import 'file:///C:/Users/Sachin/Documents/GitHub/NewsApp-Flutter/lib/screens/MainScreen.dart';
+import 'package:news_flutter_test/screens/MainScreen.dart';
+
 
 void main() {
   runApp(MyApp());
