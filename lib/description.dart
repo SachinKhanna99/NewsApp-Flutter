@@ -14,6 +14,11 @@ class _DescriptionState extends State<Description> {
   @override
   Widget build(BuildContext context) {
 
+    var emptyim=false;
+    if(widget.image==null)
+      {
+        emptyim=true;
+      }
     return Scaffold(
       appBar: AppBar(title: Text(
           widget.title.toString().trim(),
@@ -27,9 +32,12 @@ class _DescriptionState extends State<Description> {
             
             children: [
               Container(
+
                 height: 300,
                 width: 300,
-              child: Image(image: NetworkImage(widget.image,),height: 200,width: 200,fit: BoxFit.cover,),
+
+              //TODO Change image and set empty image 
+              child: Image(image: emptyim ? AssetImage('assets/images/article.png') : NetworkImage(widget.image,),height: 200,width: 200,fit: BoxFit.cover,),
 
               ),
               Container(
