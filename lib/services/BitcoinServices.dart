@@ -9,7 +9,7 @@ class BitcoinServices {
   static var client=https.Client;
 
   Future<Bitcoin> fetch() async{
-    var response=await https.get("https://newsapi.org/v2/everything?q=bitcoin&from=2020-10-20&sortBy=publishedAt&apiKey=e952ae07f0a047a9a9727b5da87ac3eb");
+    var response=await https.get("https://newsapi.org/v2/everything?q=bitcoin&from=2020-10-22&sortBy=publishedAt&apiKey=e952ae07f0a047a9a9727b5da87ac3eb");
     var jsonModel=null;
     try{
       if(response.statusCode==200)

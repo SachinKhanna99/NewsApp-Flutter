@@ -29,107 +29,87 @@ class _ShowLatestNewsState extends State<ShowLatestNews> {
         title: Text("Entertainment News"),
 
       ),
-      body: Padding(
-        padding: EdgeInsets.all(5),
-        child: Container(
-
-          margin: EdgeInsets.all(5),
-          child: FutureBuilder<Movies>(
-            future: _moviesmodel,
-            builder: (context, snapshot) {
-              if(snapshot.hasData)
-              {
-                return StaggeredGridView.countBuilder(
-                  crossAxisCount: 2,
+      body: Container(
+        child: FutureBuilder<Movies>(
+          future: _moviesmodel,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                  itemCount: snapshot.data.articles.length,
                   itemBuilder: (context, index) {
                     var article = snapshot.data.articles[index];
-                    var im=snapshot.data.articles[index].urlToImage;
-                    var formattedTime = DateFormat('dd MMM ')
+                    var formattedTime = DateFormat('dd MMM - HH:mm')
                         .format(article.publishedAt);
                     var weburl=article.url;
+                    var im=article.urlToImage;
+                    var des=article.description;
+                    var isdes=false;
+                    if(des==null)
+                    {
+                      isdes=true;
+                    }
 
-                    var formatTime=DateFormat('HH:mm').format(article.publishedAt);
                     var isimage=false;
+
                     if(im==null)
                     {
                       isimage=true;
                     }
-
                     return GestureDetector(
                       onTap: (){
                         Navigator.push(context, new MaterialPageRoute(builder: (context) => new Description(
                             article.title,article.description,
-                            formatTime,article.author,formattedTime,weburl,im
+                            formattedTime,article.author,formattedTime,weburl,im
 
                         ),));
-                        print(article.description);
-                        print(article.title);
                       },
                       child: Container(
-                        child: SingleChildScrollView(
-                          child: Column(
-
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.all(5),
-
+                        height: 100,
+                        margin: const EdgeInsets.all(8),
+                        child: Row(
+                          children: <Widget>[
+                            Card(
+                              clipBehavior: Clip.antiAlias,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(24),
+                              ),
+                              child: AspectRatio(
+                                aspectRatio: 1,
                                 child: isimage ?Icon(Icons.not_interested,size: 130,): Image.network(article.urlToImage,
                                   fit: BoxFit.cover,
-
-                                ),
-
-                              ),
-                              SizedBox(height: 10,width: 10,),
-
-                              Container(
-                                color: Colors.amber,
-
-                                child: Text(article.title,
-                                  overflow: TextOverflow.ellipsis ,
                                 ),
                               ),
-                              Row(
-                                children: [
-                                  Container(
-                                    child: Text(
-                                      formattedTime,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
+                            ),
+                            SizedBox(width: 16),
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(formattedTime),
+                                  Text(
+                                    article.title,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
                                   ),
-                                  SizedBox(width: 50,),
-                                  Container(
-                                    child: Text(
-                                      formatTime,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
+                                  isdes?Text("Description not available"):
+                                  Text(
+                                    article.description,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-
                                 ],
                               ),
-
-
-
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     );
-                  },
-                  itemCount: snapshot.data.articles.length,
-                  staggeredTileBuilder: (index)=> new StaggeredTile.fit(1),crossAxisSpacing: 15,mainAxisSpacing: 40,
-
-                );
-              }
-              else{
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            },
-
-          ),
+                  });
+            } else
+              return Center(child: CircularProgressIndicator());
+          },
         ),
       ),
     );
